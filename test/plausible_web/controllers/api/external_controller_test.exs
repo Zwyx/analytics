@@ -470,7 +470,8 @@ defmodule PlausibleWeb.Api.ExternalControllerTest do
       pageview = get_event(site)
 
       assert response(conn, 202) == "ok"
-      assert pageview.referrer_source == "some.android.app"
+      assert pageview.referrer == "android-app://some.android.app"
+      assert pageview.referrer_source == "android-app://some.android.app"
     end
 
     test "screen size is calculated from user agent", %{conn: conn, site: site} do
